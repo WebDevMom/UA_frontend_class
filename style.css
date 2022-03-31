@@ -1,0 +1,94 @@
+body {
+  background-color: black;
+  color: #ffffff;
+}
+
+nav {
+  font-size: 25px;
+  display: block;
+  padding-top: 15px;
+}
+img {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a {
+  padding-right: 30px;
+}
+
+a:link {
+  color: green;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:visited {
+  color: pink;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: red;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:active {
+  color: yellow;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+span {
+  padding-right: 30px;
+  padding-left: 10px;
+}
+
+h1 {
+  background-color: #002b80;
+  font-size: 50px;
+  color: #ffffff;
+  text-align: center;
+  padding-bottom: 30px;
+}
+h2 {
+  margin-top: 30px;
+  background-color: #002b80;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+q {
+  font-size: 30px;
+  color: #ffffff;
+}
+
+cite {
+  font-size: 25px;
+  color: #ffffff;
+}
+
+p {
+  font-size: 25px;
+  margin: 30px;
+}
+ul {
+  font-size: 25px;
+  margin: 30px;
+}
+
+ol {
+  font-size: 25px;
+  margin: 30px;
+}
+table {
+  color: whitesmoke;
+  font-size: 30px;
+  text-align: center;
+  width: 100%;
+}
+#message {
+  color: cornflowerblue;
+}
