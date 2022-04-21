@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Class18</title>
+    <script>
+      var step = 0;
+      while (step < 10) {
+        console.log("Hello");
+        step++;
+        let myVar = "MyValue";
+      }
+
+      step = 0;
+      while (step < 10) {
+        step++;
+        console.log("Hi There");
+      }
+      step = 0;
+      do {
+        console.log("DoWhile" + step);
+        step++;
+      } while (step < 10);
+
+      //for loops
+      for (var step = 0; step < 10; step++) {
+        console.log("for loop" + step);
+      }
+      for (var step = 10; step > 0; step--) {
+        console.log("for decrement" + step);
+      }
+      var MyValue = 20;
+      function setValue(MyValue) {
+        this.myValue = myValue;
+      }
+      setValue(10);
+      myValue += 5;
+      console.log(myValue); //this will be 15;
+
+      function showFlavor() {
+        var radioValue = document.getElementsByName("flavor");
+        console.log(radioValue);
+      }
+      for (var step = 0; step < radioValue.length; step++) {
+        console.log("Radio" + step);
+        if (radioValue[step].checked) {
+          console.log("Select Flavor is " + radioValue[step].value);
+
+        }
+      }
+
+      
+    </script>
+  </head>
+  <body>
+    <h1>Class 18 Loops</h1>
+
+    <p>
+      Icecream:<br />
+      <input type="radio" name="flavor" value="Strawberry" />Strawberry<br />
+      <input type="radio" name="flavor" value="Vanilla" />Vanilla<br />
+      <input type="radio" name="flavor" value="Chocolate" />Chocolate<br />
+      <input type="radio" name="flavor" value="Mint" />Mint<br />
+    </p>
+  </body>
+</html>
