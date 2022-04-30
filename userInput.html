@@ -4,20 +4,22 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>userInput</title>
     <script>
       function UpdateResults() {
+        sessionStorage.setItem("Name", document.getElementById("NAME").value);
+        sessionStorage.setItem("Email", document.getElementById("EMAIL").value);
         sessionStorage.setItem(
-          "Name",
-          document.getElementById("NAME").value,
-          "Email",
-          document.getElementById("EMAIL").value,
           "Phone Number",
-          document.getElementById("Phone").value,
-          "Likes",
-          document.getElementById("LIKES").value,
+          document.getElementById("PHONE").value
+        );
+        sessionStorage.setItem("Likes", document.getElementById("LIKES").value);
+        sessionStorage.setItem(
           "Dislikes",
-          document.getElementById("DISLIKES").value,
+          document.getElementById("DISLIKES").value
+        );
+        sessionStorage.setItem(
           "Favorite Color",
           document.getElementById("FAVORITECOLOR").value
         );
@@ -25,34 +27,72 @@
     </script>
   </head>
   <body>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about_me.html">About Me</a>
+      <a href="tables.html">Table</a>
+      <a href="biltong/index.html">How to</a>
+      <a href="strings.html">Strings</a>
+      <span>UserInput</span>
+    </nav>
     <form action="userResults.html">
-      <h1>CONTACT ME</h1>
+      <h1 id="surveyheading">UserInput</h1>
 
       <label for="">NAME</label>
       <br />
-      <input id="NAME" placeholder="Enter Name" type="text" />
+      <input
+        id="NAME"
+        class="inputboxes"
+        placeholder="Enter Name"
+        type="text"
+      />
       <br />
       <label for="">EMAIL</label>
       <br />
-      <input id="EMAIL" placeholder="Enter Email" type="email" />
+      <input
+        id="EMAIL"
+        class="inputboxes"
+        placeholder="Enter Email"
+        type="email"
+      />
       <br />
       <label for="">PHONE NUMBER</label>
-      <input id="PHONE" placeholder="Enter phone number" type="tel" />
+      <br />
+      <input
+        id="PHONE"
+        class="inputboxes"
+        placeholder="Enter phone number"
+        type="tel"
+      />
       <br />
       <label for="">LIKES</label>
-      <input id="LIKES" placeholder="Enter your Likes" type="text" />
+      <br />
+      <input
+        id="LIKES"
+        class="inputboxes"
+        placeholder="Enter your Likes"
+        type="text"
+      />
       <br />
       <label for="">DISLIKES</label>
-      <input id="DISLIKES" placeholder="Enter your Dislikes" type="text" />
+      <br />
+      <input
+        id="DISLIKES"
+        class="inputboxes"
+        placeholder="Enter your Dislikes"
+        type="text"
+      />
       <br />
       <label for="">FAVORITE COLOR</label>
+      <br />
       <input
         id="FAVORITECOLOR"
+        class="inputboxes"
         placeholder="Enter your favorite color"
         type="text"
       />
       <br />
-      <input type="submit" onclick="UpdateResults()" />
+      <input type="submit" id="submit" onclick="UpdateResults()" />
     </form>
   </body>
 </html>

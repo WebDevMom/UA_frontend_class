@@ -6,11 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>User Results</title>
   </head>
-  <body>
+  <body>  
+    <div id="results"></div>
     <script>
       for (let i = 0; i < sessionStorage.length; i++) {
-        const element = sessionStorage[i];
-        console.log(sessionStorage.getItem(sessionStorage.key(i)));
+        document.getElementById("results").innerText += sessionStorage.getItem(
+          sessionStorage.key(i)
+        );
       }
     </script>
   </body>
