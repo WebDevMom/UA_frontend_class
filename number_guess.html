@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      td {
+        text-align: center;
+      }
+    </style>
+
+    <script>
+      var answer = Math.floor(Math.random() * 100);
+      var tries = 0;
+      var upper;
+      var lower;
+      var max_tries = 5;
+
+      function load_values() {
+        //var answer= 5;
+      }
+      function submit_guess() {
+        var guess = document.getElementById("guess").value;
+        alert(guess + " " + answer);
+        if (guess == answer) {
+          alert("You Win");
+        } else if (guess > answer) {
+            document.getElementById("msg").innerHTML = "Too High";
+        }else if (guess < answer) {
+            document.getElementById("msg").innerHTML = "Too Low";
+        }else {
+         message = "Wrong";
+      }
+      document.getElementById("msg").innerHTML = message;
+    </script>
+    <title>Number Guess</title>
+  </head>
+  <body onload= "load_values()">
+    <center><h1>Number Guessing Game</h1></center>
+      
+      <table align= "center";
+        <tr> 
+          <td colspan="2" align="center">Number is between 1 and 100</td>
+      </tr>
+        <tr>
+          <td>Enter a Guess:</td>
+        <td>
+          <input
+            id="guess"
+            class="input_guess"
+            type="number"
+            size="3"
+            min="1"
+            max="100"
+          />
+        </td>
+      </tr>
+
+      <tr>
+        <td>Guesses: 0</td>
+        <td><button onclick="submit_guess()">Submit</button></td>
+      </tr>
+
+      <tr>
+        <td colospan="2"><div Id= "Msg"</div></td>
+      </tr>
+    </table>
+  
+  </body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <html>
+      <head>
+        <title>test</title>
+        <script
+          type="text/javascript"
+          src="https://code.jquery.com/jquery-1.7.1.min.js"
+        ></script>
+        <script>
+          //AJAX and Jquery to get file from server
+          $(document).ready(function () {
+            $.ajax({
+              type: "GET",
+              url: "test.csv", //Name of file you want to read
+              dataType: "text",
+              success: function (data) {
+                csvToArray(data); //This is the function call to Javascript
+              },
+            });
+          });
+
+          //Convert the file to an array
+          function csvToArray(data) {
+            //Clean up file so it can be split on a comma
+            data = data.replace(/(\r\n|\n|\r)/gm, ",");
+            console.log(data);
+
+            //Build array from CSV file and output to console
+            var dataArray = data.split(",");
+            console.log(dataArray);
+            //Sudo code for the html I'm wanting to build
+            //<table>
+            //  <tr>
+            //    <th>dataArray[0]</th>
+            //    <th>dataArray[1]</th>
+            //    <th>dataArray[2]</th>
+            //    <th>dataArray[2]</th>
+            //  </tr>
+            //  <tr>
+            //    <td>dataArray[3]</td>
+            //    <td>dataArray[4]</td>
+            //    <td>dataArray[5]</td>
+            //  </tr>
+            //  <tr>
+            //    <td>dataArray[6]</td>
+            //    <td>dataArray[7]</td>
+            //    <td>dataArray[8]</td>
+            //  </tr>
+            // </table>
+
+            //Load array into a table on the page
+            var columTracker = "firstColumn";
+            var htmlCodeForPage = "<table>";
+
+            for (counter = 0; counter < dataArray.length; counter++) {
+              //Populate the column headers
+              if (columTracker == "firstColumn") {
+                htmlCodeForPage =
+                  htmlCodeForPage + "<tr><th>" + dataArray[counter] + "</th>";
+                columTracker = "secondColumn";
+              } else if (columTracker == "secondColumn") {
+                htmlCodeForPage =
+                  htmlCodeForPage + "<th>" + dataArray[counter] + "</th>";
+                columTracker = "thirdColumn";
+              } else if (columTracker == "thirdColumn") {
+                htmlCodeForPage =
+                  htmlCodeForPage + "<th>" + dataArray[counter] + "</th></tr>";
+                columTracker = "first";
+              }
+
+              //Populate rest of the table
+              else if (columTracker == "first") {
+                htmlCodeForPage =
+                  htmlCodeForPage + "<tr><td>" + dataArray[counter] + "</td>";
+                columTracker = "second";
+              } else if (columTracker == "second") {
+                htmlCodeForPage =
+                  htmlCodeForPage + "<td>" + dataArray[counter] + "</td>";
+                columTracker = "third";
+              } else if (columTracker == "third") {
+                htmlCodeForPage =
+                  htmlCodeForPage + "<td>" + dataArray[counter] + "</td></tr>";
+                columTracker = "first";
+              }
+            }
+
+            htmlCodeForPage = htmlCodeForPage + "</table>";
+
+            //Load table into Div on page
+            document.getElementById("dataFromCSVFile").innerHTML =
+              htmlCodeForPage;
+          }
+        </script>
+      </head>
+
+      <body>
+        <div id="dataFromCSVFile"></div>
+      </body>
+    </html>
+  </head>
+</html>

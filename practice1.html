@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carmen</title>
+    <script>
+      function alertUser() {
+        var x = document.getElementById("myFirstCheckbox1").value;
+        alert(x);
+      }
+    </script>
+  </head>
+  <body>
+    <label for="username">Enter UserName</label>
+    <input type="password" id="username" />
+    <br />
+    <br />
+    <br />
+    <input
+      type="checkbox"
+      id="myFirstCheckbox1"
+      name="myFirstCheckbox1"
+      value="jordanRocks">
+    <label for="myFirstCheckbox2">Jordan Rocks and has a cool chair</label>
+    
+    <br>
+    <input
+      type="checkbox"
+      id="myFirstCheckbox2"
+      name="myFirstCheckbox2"
+      value="Jordan sort of Rocks"
+    />
+    <label for="myFirstCheckbox2"
+      >Jordan has issues identifying as a rock star when all he does is sit in
+      a chair all day</label>
+    <br/>
+    <button onclick="alertUser()">Click this button</button>
+    <br>
+    <br>
+    <input type="date" id="iNeedADate">
+    <br>
+    <br>
+
+    <select id="dropItLikeItsHot">
+        <option value="plainVanilla">Vanilla</option>
+        <option value="veryStrawberry">Strawberry</option>
+        <option value="darkChocolate"selected>Chocolate</option>
+        </select>
+<br>
+    
+  </body>
+</html>

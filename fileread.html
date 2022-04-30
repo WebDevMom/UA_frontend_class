@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table,
+      td,
+      th {
+        border: 1px solid black;
+        border-style: solid;
+        border-color: #002b80;
+      }
+    </style>
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-1.7.1.min.js"
+    ></script>
+  </head>
+  <body>
+    <script>
+      $(document).ready(function () {
+        $.ajax({
+          type: "GET",
+          url: "test.csv",
+          dataType: "text",
+          success: function (data) {
+            csvToArray(data); //This is the function call to Javascript
+          },
+        });
+      });
+
+      function csvToArray(csvFile) {
+        var dataArray = csvFile.split(",");
+        for (let i = 0; i < dataArray.length; i++) {
+          if (i < dataArray.length / 2) {
+            document.getElementById(
+              "row1"
+            ).innerHTML += `<th>${dataArray[i]}</th>`;
+          } else {
+            document.getElementById(
+              "row2"
+            ).innerHTML += `<td>${dataArray[i]}</td>`;
+          }
+        }
+      }
+    </script>
+    <table>
+      <tr id="row1"></tr>
+      <tr id="row2"></tr>
+    </table>
+  </body>
+</html>

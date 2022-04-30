@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Arithmetic Operator</h1>
+    <h2>Simple Calculator</h2>
+
+    <input size="3" type="text" id="num1" value="5" /> &nbsp;
+    <select id="operator">
+      <option value="add" selected>+</option>
+      <option value="sub">-</option>
+      <option value="mult">*</option>
+      <option value="div">/</option>
+      <option value="mod">%</option></select
+    >&nbsp; <input size="3" type="text" id="num2" value="2" /> &nbsp;=&nbsp;
+    <input size="8" type="text" id="answerBox" />
+    <p>
+      <button onclick="calculate()">Show Answer</button>&nbsp;<button
+        onclick="clear_values()"
+      >
+        Clear
+      </button>
+    </p>
+    <p><button onclick="tryThis()">Click Me</button></p>
+
+    <script>
+      //calculate the answer
+      function calculate() {
+        //alert("This works");
+        var first_number = null;
+        var second_number = null;
+        var operator_selected = null;
+        var answer = null;
+
+        first_number = parseInt(document.getElementById("num1").value);
+        second_number = parseInt(document.getElementById("num2").value);
+        operator_selected = document.getElementById("operator").value;
+
+        //alert(operator_selected);
+
+        /*
+            if (operator_selected == "add") {
+              answer = first_number + second_number;
+            } else if (operator_selected == "sub") {
+              answer = first_number - second_number;
+            } else if (operator_selected == "mult") {
+              answer = first_number * second_number;
+            }
+      */
+
+        switch (operator_selected) {
+          case "add":
+            answer = first_number + second_number;
+            break;
+          case "sub":
+            answer = first_number - second_number;
+            break;
+          case "mult":
+            answer = first_number * second_number;
+            break;
+          case "div":
+            answer = first_number / second_number;
+            break;
+          case "mod":
+            answer = first_number % second_number;
+          default:
+            alert("Something went wrong");
+        } //end switch
+
+        document.getElementById("answerBox").value = answer;
+        //alert(answer);
+        //end calculate
+      }
+      function clear_values() {
+        //alert("inside Clear Function")
+        document.getElementById("num1").value = "";
+        document.getElementById("num2").value = "";
+        document.getElementById("answerBox").value = "";
+      } //end clear
+
+      //Group of other helper functions
+      function tryThis() {
+        alert("Something Else");
+      }
+    </script>
+  </body>
+</html>
