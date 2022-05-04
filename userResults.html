@@ -1,19 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>User Results</title>
-  </head>
-  <body>  
-    <div id="results"></div>
-    <script>
-      for (let i = 0; i < sessionStorage.length; i++) {
-        document.getElementById("results").innerText += sessionStorage.getItem(
-          sessionStorage.key(i)
-        );
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+  body {
+    text-align: center;
+    background-color: black;
+    color: blue;
+    font-size: 2em;
+  }
+  button {
+    height: 2.5em;
+    width: 4.5em;
+    font-size: 1.25rem;
+    font-weight: 700;
+    background-color: gray;
+    border-radius: 15px;
+  }
+  input {
+  width: 13%;
+  height: 2.5em;
+  text-align: center;
+  }
+ table,
+  th,
+  td {
+    margin-left: auto;
+    margin-right: auto;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #002b80;
       }
-    </script>
+
+</style>
+<title>User Results</title>
+</head>
+<body>
+  <div id="results"></div>
+  <script>
+  refresh();
+  function refresh() {
+  let tmpString = "<table>";
+  
+  for (let i = 0; i < sessionStorage.length; i++) {
+  tmpString += "<tr><th>" + sessionStorage.key(i) + "</th>";
+  tmpString +=
+  "<td>" + sessionStorage.getItem(sessionStorage.key(i)) + "</td>";
+  }
+  tmpString += "</table>";
+  document.getElementById("results").innerHTML = tmpString;
+  }
+  function addData() {
+  let entry = document.getElementById("entry").value;
+  let value = document.getElementById("value").value;
+  sessionStorage.setItem(entry, value);
+  refresh();
+  }
+  function removeData() {
+  let entry = document.getElementById("rEntry").value;
+  sessionStorage.removeItem(entry);
+  refresh();
+  }
+  </script>
+  <input id="entry" type="text" placeholder="key" />
+  <input id="value" type="text" placeholder="value" />
+  <button onclick="addData()">Add</button><br /><br />
+  <input id="rEntry" type="text" placeholder="key" />
+  <button onclick="removeData()">Remove</button>
   </body>
-</html>
+  </html>

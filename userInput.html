@@ -8,23 +8,21 @@
     <title>userInput</title>
     <script>
       function UpdateResults() {
-        sessionStorage.setItem("Name", document.getElementById("NAME").value);
-        sessionStorage.setItem("Email", document.getElementById("EMAIL").value);
-        sessionStorage.setItem(
-          "Phone Number",
-          document.getElementById("PHONE").value
-        );
-        sessionStorage.setItem("Likes", document.getElementById("LIKES").value);
-        sessionStorage.setItem(
-          "Dislikes",
-          document.getElementById("DISLIKES").value
-        );
-        sessionStorage.setItem(
-          "Favorite Color",
-          document.getElementById("FAVORITECOLOR").value
-        );
+      let name = document.getElementById("NAME").value;
+      let email = document.getElementById("EMAIL").value;
+      let phone = document.getElementById("PHONE").value;
+      let likes = document.getElementById("LIKES").value;
+      let dislikes = document.getElementById("DISLIKES").value;
+      let favoriteColor = document.getElementById("FAVORITECOLOR").value;
+      
+      sessionStorage.setItem("Name", name);
+      sessionStorage.setItem("Email", email);
+      sessionStorage.setItem("Phone Number", phone);
+      sessionStorage.setItem("Likes", likes);
+      sessionStorage.setItem("Dislikes", dislikes);
+      sessionStorage.setItem("Favorite Color", favoriteColor);
       }
-    </script>
+      </script>
   </head>
   <body>
     <nav>
