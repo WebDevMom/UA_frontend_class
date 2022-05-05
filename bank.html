@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Bank </title>
+    <script> 
+    var isUserAuthenticated = true;
+    
+    function deposit(amount){
+        amount= amount +(amount/100)*10;
+        this.balance += amount;
+        console.log(this.balance);
+}
+    var cSavings =
+    {
+        cFirst_Name: "",
+        cLast_Name: "",
+        cCell: "",
+        balance: 0,
+        deposit: deposit,
+        Get_Balance: function ()
+        {
+           if (isUserAuthenticated)
+           {
+                return this.balance;
+        } else return null;
+    }
+    };
+    
+    //Run Function
+    function runMe()
+    {
+        cSavings.balance = 200;
+        console.log(cSavings.Get_Balance());
+    }
+    runMe();
+    cSavings.deposit(400);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
