@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>magic</title>
+    
+        function abrcadabra(){
+            var x = document.getElementById("magic");
+        
+            if(x.style.display == "none"){
+                x.style.display = "block";
+                document.getElementById(`magicButton`).innerHTML = `Hide`;
+            }
+            else{
+                x.style.display = "none";
+                document.getElementById(`magicButton`).innerHTML = `Show`;
+            }
+        function addDiv(){
+            var newDiv = document.createElement(`div`);
+            newDiv.innerHTML = "<text>Hey I'm being dynamically created<text>";
+            newDiv.style.backgroundColor = "blue";
+            document.body.appendChild(newDiv);
+            }
+        }
+    </script>
+</head>
+<body>
+  <button id="magicButton" onclick="abracadabra()">Hide</button>  
+
+<div Id= "magic">
+    <h1>Hey now you can see me</h1>
+</div>
+    <br>
+    <br>
+    <button id= "creatDivs" onclick="addDiv()">Create Div</button>
+    <br>
+    <br>
+    <div id= "emptyDiv"></div>
+    <button id="fillDiv" onclick="populateDiv()">Populate DIV</button>
+
+
+</body>
+</html>

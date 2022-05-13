@@ -4,42 +4,128 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Bank </title>
-    <script> 
-    var isUserAuthenticated = true;
-    
-    function deposit(amount){
-        amount= amount +(amount/100)*10;
-        this.balance += amount;
-        console.log(this.balance);
-}
-    var cSavings =
-    {
-        cFirst_Name: "",
-        cLast_Name: "",
-        cCell: "",
-        balance: 0,
-        deposit: deposit,
-        Get_Balance: function ()
+    <link rel="stylesheet" href="bstyle.css">
+    <title> Smith National Bank</title>
+    <script>
+        setTimeout(() => {
+            document.getElementById('loadingAnimation').style.display = 'none';
+        }, 5000);<!--loading animation-->
+        
+        //Authenticate user. We will add a real authenticator later
+        var isUserAuthenticated = true;
+​
+        //Create a cSavings Class that we can use as a Savings Account
+        class cSavings 
         {
-           if (isUserAuthenticated)
-           {
-                return this.balance;
-        } else return null;
-    }
-    };
-    
-    //Run Function
-    function runMe()
-    {
-        cSavings.balance = 200;
-        console.log(cSavings.Get_Balance());
-    }
-    runMe();
-    cSavings.deposit(400);
+            cFirst_Name;
+            cLast_Name;
+            cCell;
+            balance = 300;
+            Get_Balance()
+            {
+                if (isUserAuthenticated)
+                {
+                    return this.balance;
+                }
+                else return null;
+            }
+            Deposit_with_Bonus(depo_amount)
+            {
+                this.balance = this.balance+depo_amount+.1*depo_amount;
+            }
+            Deposit (depo_amount)
+            {
+                this.balance = this.balance + depo_amount;
+            }
+            Withdraw (amount)
+            {
+                this.balance = this.balance - amount;
+            }
+        }
+​
+        //Create savings account for user
+        var userSavingsAccount = new cSavings();
+​
+        //Update balance based on user input
+        function UpdatePage(){
+            //Convert strings to numbers
+            var withdrawAmount = parseFloat(document.getElementById("userWithdraw").value);
+            var depositAmount = parseFloat(document.getElementById("userDeposit").value);
+​
+            //Update Balance only if fields are populated using !isNaN could also use typeOf
+            if(!isNaN(withdrawAmount)){
+                userSavingsAccount.Withdraw(withdrawAmount);
+            }
+​
+            if(!isNaN(depositAmount)){
+                userSavingsAccount.Deposit(depositAmount);
+            }
+            
+            //Update the balance on the page
+            document.getElementById("userBalance").innerHTML = "Your Balance: " + userSavingsAccount.balance;
+​
+            //Clear the input fields
+            document.getElementById("userWithdraw").value = "";
+            document.getElementById("userDeposit").value = "";
+        }
+        function openForm() {
+            document.getElementById("myForm").style.display = "block";
+}
+
+        function closeForm() {
+            document.getElementById("myForm").style.display = "none";
+}
     </script>
 </head>
-<body>
+
+<!--UpdatePage() onload so the entire page can first load-->
+<body onload="UpdatePage()">
+    <h1>Smith National Bank</h1>
+    <div class="container1">
+            <label>Username : </label>   
+            <input type="text" placeholder="Enter Username" name="username" required> 
+            <input type="checkbox" checked="checked"> Remember me <br>
+            <br>
+            <label>Password : </label>   
+            <input type="password" placeholder="Enter Password" name="password" required>
+             <a href="#"> Forgot password? </a><br>
+             <br>
+            <button type="login">Login</button> 
+            <button type="button" class="cancelbtn"> Cancel</button> 
+        </form> 
     
+    <form2>   
+    </div>
+    <div id= "loadingAnimation" class= "loader"></div><!--loading aniamtion-->
+    <form>
+    <h2>Account Resources</h2>
+        <p id="userBalance">Account Balance</p>
+        <br>
+        <label for="userWithdraw">Withdraw Amount:</label>
+        <input type="text" id="userWithdraw">
+        <br>
+        <br>
+        <label for="userDeposit">Deposit Amount:</label>
+        <input type="text" id="userDeposit">
+    <br>
+    <div class="container2">
+        <div class="center">
+    <button onclick="UpdatePage()">Submit</button>
+    </div>
+    </div>
+</form2>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
