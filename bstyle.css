@@ -1,11 +1,14 @@
 .loader {
-  margin: auto;
+  margin: -76px 0 0 -76px;
   border: 20px solid #EAF0F6;
   border-radius: 50%;
   border-top: 20px solid #FF7A59;
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   animation: spinner 4s linear infinite;
+  position: absolute;
+  left: 50%;
+  top: 50%;
    }
 
   @keyframes spinner {
@@ -56,7 +59,7 @@ form {
     padding-right: 30px;
     padding-left: 30px;
     text-align: center;
-    font-size: 1.5em;
+    font-size: 1.25em;
     border: 8px solid #232ED1;
 }
   
@@ -69,4 +72,10 @@ a {
       color: #ACBDBA;
       font-size: 1.5rem;
   }
+
+  p {
+      font-weight: 800;
+      color:#ACBDBA;
+  }
+  
   
