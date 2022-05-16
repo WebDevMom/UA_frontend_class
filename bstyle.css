@@ -40,11 +40,17 @@
     transform: translate(-50%, -50%);
   }
 
-  img {
+  #bankLogo {
       height: auto;
       width: 285px;
       padding-bottom: 10px;
       padding-top: 10px;
+      padding-right: 10px;
+  }
+
+  #welcomeImage {
+      height: 400;
+      width: 950px;
   }
 
 h1 {
