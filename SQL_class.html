@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Carmen</title>
+  <script>
+      //Select Data from SQL Server
+      function selectDataFromSQLServer(){
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function (){
+            if(this.readyState == 4 && this.status == 200){ //Only run after we get a status of successful and it has finished working
+                if(this.responseText.replace(/(\r\n|\n|\r)/gm, "") == ""){
+                    document.getElementById("resultsDiv").innerHTML = "Nothing Found";
+                }
+                else {
+                    document.getElementById("resultsDiv").innerHTML = this.responseText;
+                    console.log(this.responseText);
+                }   
+            }
+        };
+        xhttp.open("GET","SQL_select.php?q="+ document.getElementById("inputFromUser").value, true);
+        xhttp.send();
+    }
+    //Insert Data to SQL Server
+    function insertDataToSQLServer(dataToInsert){
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function (){
+            if(this.readyState == 4 && this.status == 200){ //Only run after we get a status of successful and it has finished working
+                document.getElementById("resultsDiv").innerHTML = this.responseText;
+                console.log(this.responseText);    
+            }
+        };
+        xhttp.open("GET", "SQL_insert.php?q="+dataToInsert, true);
+        xhttp.send();
+    }
+    //update Data on SQL server
+function updateDataOnSQLServer(valueToUpdate, lookupKey) {
+    var xhttp;
+    xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("resultsDiv").innerHTML = this.responseText;
+            console.log(this.responseText);
+        }
+    };
+    xhttp.open("GET", "SQL_update.php?q="+valueToUpdate+"&k="+lookupKey, true);
+    xhttp.send();
+}
+
+
+
+  </script>
+</head>
+<body>
+    <input type="text" id="inputFromUser">
+    <button onClick="selectDataFromSQLServer()">Get Data</button>
+    <br>
+    <button onclick="insertDataToSQLServer('123,123, 123, 123, 123, 123, 123')">Insert Data</button>
+    <br>
+    <button onclick="deleteDataFromSQLServer('\Muffins\'')">Delete Data</button>
+    <br>
+    <button onclick="updateDataOnSQLServer('\'Bran Muffins\'','591')">Update Data</button>
+    <br>
+    <br>
+    <label for="CompanyNameInput">Update your company name</label>
+    <input type="text" id="CompanyNameInput"
+    
+    
+    <div id="resultsDiv"></div>
+</body>
+</html>

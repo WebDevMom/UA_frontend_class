@@ -47,15 +47,19 @@
       padding-top: 10px;
       padding-right: 10px;
   }
-
   #welcomeImage {
-      height: 300;
-      width: 500px;
+    height: 300;
+    width: 500px;
+}
+  .row {
+    display: flex;
   }
-  #mainPage {
-      
+  
+  .column {
+    flex: 33.33%;
+    padding: 5px;
   }
-
+  
 h1 {
     text-align: center;
     background-color: #B20D30;
@@ -95,4 +99,6 @@ a {
       color:#ACBDBA;
   }
   
-  
+  @media screen and (max-width: 500px) {
+    .column {
+      width: 100%; 
