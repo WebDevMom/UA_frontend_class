@@ -5,9 +5,9 @@ if($mysqli->connect_error) {
   exit('Could not connect');
 }
 
-/* SQL DELETE Statement */
-$sql = 'DELETE FROM CUSTOMERDB WHERE CustomerID = ' . $_GET['q'];
-        
+/* Your SQL Query */
+$sql = 'DELETE FROM CustomerDB WHERE CustomerID = ' . $_GET['q'];
+
 /* Run SQL Query */
 $stmt = $mysqli->prepare($sql);
 $stmt->bind_param("s", $_GET['q']);

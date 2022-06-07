@@ -2,16 +2,16 @@
 /* Connection Info */
 $mysqli = new mysqli("75.39.198.77", "jordan", "Class2022!", "FrontEndClass");
 if($mysqli->connect_error) {
-    exit('Could not connect');
-  }
+  exit('Could not connect');
+}
 
 /* Your SQL Query */
-$sql = "SELECT CustomerID, Companyname, Address, City, State, Zip, Country
-FROM CustomerDB WHERE CustomerID = " . $_GET['q']; 
+$sql = "SELECT CustomerID, CompanyName, Address, City, State, Zip, Country
+FROM CustomerDB WHERE CustomerID = " . $_GET['q']; /* $_GET['q'] is the str we passed from our HTML page */
 
 /* Run SQL Query */
 $stmt = $mysqli->prepare($sql);
-$stmt->bind_param("s", $_GET['q']); /*variable from javascript*/
+$stmt->bind_param("s", $_GET['q']);
 $stmt->execute();
 $stmt->store_result();
 

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Guessing game</title>
+    <style>
+       td {
+           text-align: left;
+       } 
+    </style>
+
+    <script>
+        var answer = Math.floor(Math.random()*100);
+        //var answer = 5;
+        var tries = 0;
+        var upper;
+        var lower;
+        var max_tries;
+
+        function load_values() {
+            upper = 100;
+            lower = 1;
+            document.getElementById('lower').innerHTML = lower;
+            document.getElementById('upper').innerHTML = upper;
+            document.getElementById('tries').innerHTML = 0;
+            
+            //alert(document.getElementById('difficulty').value);
+            setMaxTries(document.getElementById('difficulty').value);
+            //alert(max_tries); 
+            document.getElementById('msg').innerHTML = "Guess in " + max_tries + " tries.";
+
+            //detects change in the dropdown used to update the screen immediately;
+            document.getElementById('difficulty').addEventListener('change', function handleChange(event) {
+                setMaxTries(event.target.value);
+                updateScreen("Guess in " + max_tries + " tries.");
+            });
+
+        } // end load_values
+
+            //I decoupled the max tries from the "level" to allow you to put more levels
+            //in between levels depending on what you felt was necessary.  Decoupling requires the 
+            //switch in the max_tries function.
+            //An easier way would be to set the dropdown values to the actual tries you want
+            //but that offers less flexibility down the road.
+        function setMaxTries (diff_lvl){
+            diff_lvl = parseInt(diff_lvl);
+            switch (diff_lvl){
+                case 100:
+                    max_tries = 10;
+                    document.getElementById('wolf').src = "1.png";
+                    break;
+                case 200:
+                    max_tries = 8;
+                    document.getElementById('wolf').src = "2.png";
+                    break;
+                case 300:
+                    max_tries = 6;
+                    document.getElementById('wolf').src = "3.png";
+                    break;
+                case 400:
+                    max_tries = 4;
+                    document.getElementById('wolf').src = "4.png";
+                    break;
+                default:
+                    max_tries = 20;
+                    document.getElementById('wolf').src = "1.png";
+            }
+        } //end set max tries
+
+        function submit_guess() {
+            var guess = document.getElementById('guess').value;
+            var message = "";
+            tries++;
+            //alert (guess + " " + answer);
+            if (guess == answer) {
+                alert("You win! It took you " + tries + " tries.");
+                location.reload();
+            } else if (guess <= lower || guess >= upper) {
+                if (tries == 1 && (guess == upper || guess == lower)){
+                    message = "Try again";
+                }
+                else {
+                    message = "Out of range."
+                    tries--;
+                }
+            } else if (tries >= max_tries) {
+                alert("You lose. Too many tries. Answer was " + answer);
+                location.reload();
+            } else if (guess > answer) {
+                message = "Too High";
+                upper = guess;
+            } else if (guess < answer) {
+                message = "Too Low";
+                lower = guess;
+            } else {
+                alert("Error in Program. Reloading...");
+                location.reload();
+            }
+            updateScreen(message);
+            
+        } //end submit_guess
+        
+        function updateScreen(message) {
+            if (tries >=1 )
+            {
+                document.getElementById("difficulty").disabled = true;
+            }
+            document.getElementById('msg').innerHTML = message;
+            document.getElementById('tries').innerHTML = tries;
+            document.getElementById('upper').innerHTML = upper;
+            document.getElementById('lower').innerHTML = lower;
+        } // end updateScreen
+
+        
+
+    </script>
+
+
+</head>
+
+<body onload="load_values()">
+<center><h1>Class Number Guessing Game</h1></center>
+
+<table border="1" align="center">
+    <tr>
+        <td colspan="2" align="center">Number is between <span id="lower"></span> and <span id="upper"></span></td>
+        <td rowspan="4" align="left" style="vertical-align: top;"><center><u>Difficulty</u></center>
+            <select name="difficulty" id="difficulty">
+                <option value="100">Can I play, Daddy?</option>
+                <option value="200">Don't hurt me.</option>
+                <option value="300" selected>Bring 'em on!</option>
+                <option value="400">I am Death incarnate!</option>
+            </select>
+            <center><img scr="./kindred.jpg" id="wolf"  alt="difficulty" /></center>
+        </td>
+    </tr>
+    <tr>
+        <td>Enter a Guess:</td>
+        <td>
+            <input id="guess" class="input_guess" type="number" size="3" min="1" max="100" />
+        </td>
+    </tr>
+    <tr>
+        <td>Guesses: <span id="tries"></span></td>
+        <td>
+            <button onclick="submit_guess()">Submit</button>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2"><div id="msg"></div></td>
+    </tr>
+
+
+</table>
+
+</body>
+
+</html>
+<body>
+    
+</body>
+</html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Carmen</title>
   <script>
@@ -20,6 +21,7 @@
         xhttp.open("GET","SQL_select.php?q="+ document.getElementById("inputFromUser").value, true);
         xhttp.send();
     }
+
     //Insert Data to SQL Server
     function insertDataToSQLServer(dataToInsert){
         var xhttp = new XMLHttpRequest();
@@ -32,39 +34,80 @@
         xhttp.open("GET", "SQL_insert.php?q="+dataToInsert, true);
         xhttp.send();
     }
-    //update Data on SQL server
-function updateDataOnSQLServer(valueToUpdate, lookupKey) {
-    var xhttp;
-    xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("resultsDiv").innerHTML = this.responseText;
-            console.log(this.responseText);
-        }
-    };
-    xhttp.open("GET", "SQL_update.php?q="+valueToUpdate+"&k="+lookupKey, true);
-    xhttp.send();
-}
 
+    //Delete Data from SQL Server
+    function deleteDataFromSQLServer(dataToDelete){
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function (){
+            if(this.readyState == 4 && this.status == 200){ //Only run after we get a status of successful and it has finished working
+                document.getElementById("resultsDiv").innerHTML = this.responseText;
+                console.log(this.responseText);    
+            }
+        };
+        xhttp.open("GET", "SQL_delete.php?q="+dataToDelete, true);
+        xhttp.send();
+    }
 
+    //Update Data on SQL Server
+    function updateDataOnSQLServer(valueToUpdate, lookupKey){
+        var xhttp;
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("resultsDiv").innerHTML = this.responseText;
+                console.log(this.responseText);
+            }
+        };
+        xhttp.open("GET", "SQL_update.php?q="+valueToUpdate+"&k="+lookupKey, true);
+        xhttp.send();
+    }
+
+    //Optional Code!! Update data on SQL Server based on text box
+    function updateCompanyNameOnSQLServer(){
+        //Grab value of text field
+        var companyName =  "'" + document.getElementById("CompanyNameInput").value + "'";
+
+        var xhttp;
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("resultsDiv").innerHTML = this.responseText;
+                console.log(this.responseText);
+            }
+        };
+        //hard coding the value of k to 591 so it only updates my record
+        xhttp.open("GET", "SQL_update.php?q="+companyName+"&k=591", true);
+        xhttp.send();
+    }
 
   </script>
 </head>
+
 <body>
     <input type="text" id="inputFromUser">
     <button onClick="selectDataFromSQLServer()">Get Data</button>
     <br>
-    <button onclick="insertDataToSQLServer('123,123, 123, 123, 123, 123, 123')">Insert Data</button>
     <br>
-    <button onclick="deleteDataFromSQLServer('\Muffins\'')">Delete Data</button>
+    <button onclick="insertDataToSQLServer('591,\'Muffins\',\'123 Main st\',\'Seattle\',\'WA\',123456,\'USA\'')">Insert Data</button>
+    <br>
+    <br>
+    <button onclick="deleteDataFromSQLServer('591')">Delete Data</button>
+    <br>
     <br>
     <button onclick="updateDataOnSQLServer('\'Bran Muffins\'','591')">Update Data</button>
     <br>
     <br>
-    <label for="CompanyNameInput">Update your company name</label>
-    <input type="text" id="CompanyNameInput"
-    
-    
+
+    <!--Optional code to show how to use a text box as the update field-->
+    <label for="CompanyNameInput">Update your company name:</label>
+    <input type="text" id="CompanyNameInput">
+    <button onclick="updateCompanyNameOnSQLServer()">Update</button>
+    <!--End of optional Code-->
+
+    <br>
+    <br>
+    <h2>Results from Query:</h2>
     <div id="resultsDiv"></div>
 </body>
+
 </html>
