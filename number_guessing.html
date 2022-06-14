@@ -4,20 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Number Guessing game</title>
+    <title>Number Guessing Game</title>
     <style>
-       td {
+        body {
+            background-color: gray;
+            font-size: 3em;
+        }
+        td {
            text-align: left;
        } 
     </style>
 
     <script>
-        var answer = Math.floor(Math.random()*100);
+        let answer = Math.floor(Math.random()*100);
         //var answer = 5;
-        var tries = 0;
-        var upper;
-        var lower;
-        var max_tries;
+        let tries = 0;
+        let upper;
+        let lower;
+        let max_tries;
 
         function load_values() {
             upper = 100;
@@ -70,8 +74,8 @@
         } //end set max tries
 
         function submit_guess() {
-            var guess = document.getElementById('guess').value;
-            var message = "";
+            let guess = document.getElementById('guess').value;
+            let message = "";
             tries++;
             //alert (guess + " " + answer);
             if (guess == answer) {
@@ -117,11 +121,10 @@
 
     </script>
 
-
 </head>
 
 <body onload="load_values()">
-<center><h1>Class Number Guessing Game</h1></center>
+<center><h1>Number Guessing Game</h1></center>
 
 <table border="1" align="center">
     <tr>
@@ -133,7 +136,7 @@
                 <option value="300" selected>Bring 'em on!</option>
                 <option value="400">I am Death incarnate!</option>
             </select>
-            <center><img scr="./kindred.jpg" id="wolf"  alt="difficulty" /></center>
+            <!---replace image-<center><img scr="./kindred.jpg" id="wolf"  alt="difficulty" /></center>-->
         </td>
     </tr>
     <tr>

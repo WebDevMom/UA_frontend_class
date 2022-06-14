@@ -1,104 +1,56 @@
-.loader {
-  margin: -76px 0 0 -76px;
-  border: 20px solid #EAF0F6;
-  border-radius: 50%;
-  border-top: 20px solid #FF7A59;
-  width: 120px;
-  height: 120px;
-  animation: spinner 4s linear infinite;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-   }
-
-  @keyframes spinner {
-     0% {transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-   }
-   .container1 {
-    height: 325px;
-    width: 225px;
-    /*position: relative;*/
-    font-size: 1.75rem;
-    border: 10px solid #232ED1;
-    padding-left: 3rem;
-    padding-top: 3rem;
-    background-color: #B20D30;
-    
+.row {
+  height: auto;
+  width: 18vw;
+  padding-bottom: 2vw;
+  padding-top: 2vw;
+  display: flex;
 }
+
+@media screen and (max-width: 500px) {
+  .column {
+  height: auto;
+  width: 18vw;
+  padding-bottom: 2vw;
+  padding-top: 2vw;
+   
+  }
+}
+
+.container1 {
+    height: auto;
+    width: 15vw;
+    font-size: 1.75vw;
+    border: 1vw solid #232ED1;
+    padding-left: 2vw;
+    padding-top: 2vw;
+    background-color: #B20D30;   
+}
+
+#welcomePhoto {
+  height: auto;
+  width: 60vw;
+  padding-left: 2vw;
+  
+}
+
 .container2 {
-    height: 250px;
-    position: relative;
-}
-
-.center {
     margin: 0;
     position: absolute;
-    top: 50%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
   }
 
-  #bankLogo {
-      height: auto;
-      width: 285px;
-      padding-bottom: 10px;
-      padding-top: 10px;
-      padding-right: 10px;
-  }
-  #welcomeImage {
-    height: 300;
-    width: 500px;
-}
-  .row {
-    display: flex;
-  }
-  
-  .column {
-    flex: 33.33%;
-    padding: 5px;
-  }
-  
-h1 {
-    text-align: center;
-    background-color: #B20D30;
-    color: #ACBDBA;
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
-
 h2 {
     text-align: center;
     color: #232ED1;
     border-style: solid;
-    background-color: #ACBDBA;
-    border-width: 8px;  
+    border-width: .75vw;  
 }
-form {
-    padding-right: 30px;
-    padding-left: 30px;
-    text-align: center;
-    font-size: 1.25em;
-    border: 8px solid #232ED1;
-}
-  
-a {
-    padding: 8px;
-  }
 
   body {
       background-color: #252422;
       color: #ACBDBA;
-      font-size: 1.5rem;
-      margin-left: 10px;
-  }
-
-  p {
-      font-weight: 800;
-      color:#ACBDBA;
+     
   }
   
-  @media screen and (max-width: 500px) {
-    .column {
-      width: 100%; 

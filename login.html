@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Document</title>
+</head>
+<body>
+  <h1>Class authentication</h1>  
+    <table>
+        <tr>
+            <td>Userid:</td><td><input id="userid" sixe="10" maxlength= "10" value= "nark" "</td>
+        </tr>
+        <tr>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td><input id="submit" type="button" value="Submit" onclick="authenticate()"></td>
+        </tr>
+        
+    </table>
+    
+<script type="'text/javascript">
+function authenticate() {
+sessionStorage.setItem("authenticated", "false");
+    var authenticated = false;
+
+var userid = document.getElementById("userid").value;
+userid= userid.trim();
+var password = document.getElementById("passwd").value;
+}
+if (userid == sessionStorage.getItem("userid") && password == sessionStorage.getItem("passwd"))
+{
+    authenticate = true;
+    sessionStorage.setItem("authenticated","true");
+    window.location.href= "main.html";
+}
+else
+{
+    alert("Invalid Userid/Password combo");
+    document.getElemantById("passwd").value = 
+    window.localStorage
+}
+function createUser() {
+    sessionStorage.setItem("userid", "mark");
+    sessionStorage.setItem("userFirstName", "Mark");
+    sessionStorage.setItem("password","1234");
+}
+
+function clearSession() {
+    sessionStorage.clear;
+    sessionStorage
+}
+
+ </script>
+ <p>
+    <input id="clearSession" type="button" value="Clear Session" onclick="clearSession()"> <br />
+    <input id="createUser" type="button" value="Create mark" onclick="createUser()"> <br />
+</p>   
+</body>
+
+</html>

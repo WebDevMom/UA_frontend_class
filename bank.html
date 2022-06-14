@@ -8,15 +8,14 @@
     <title> WDM Bank</title>
 </head>
 
-<!--UpdatePage() onload so the entire page can first load-->
-<body onload="UpdatePage()">
-    <div id= "loadingAnimation" class= "loader"></div><!--loading animation-->
-    
-    <div id="bodyDiv" style="display:none;">
-
-<div class = "column">
-    <img id = "bankLogo" src="https://raw.githubusercontent.com/WebDevMom/UA_frontend_class/main/images/WDMBank.png" alt="WDM bank logo">
-     
+<div class= "row">
+    <div class = "column">
+    <img src="https://raw.githubusercontent.com/WebDevMom/UA_frontend_class/main/images/WDMBank.png" alt="WDM bank logo">
+   </div> 
+    <div class= "column">
+    <img id= "welcomePhoto" src="https://raw.githubusercontent.com/WebDevMom/UA_frontend_class/main/images/welcomePhoto.png" alt="woman with debit card">
+</div>
+<div class="column">
     <div class="container1">
             <label>Username : </label>   
             <input type="text" placeholder="Enter Username" name="username" required> 
@@ -27,29 +26,24 @@
              <a href="#">Reset password?</a><br>
              <br>
             <button type="login">Login</button> 
-            <button type="button" class="cancelbtn"> Cancel</button> 
-        </form>  
+            <button type="button" class="cancelbtn"> Cancel</button>   
     </div>
-    <div class = "row">
-    <img id= "welcomePhoto" src="https://raw.githubusercontent.com/WebDevMom/UA_frontend_class/main/images/welcomePhoto.png" alt="woman with debit card">
+    </div>
 </div>
     <h2>Account Resources</h2>
-        <p id="userBalance">Account Balance</p>
+    <div class="container4" id="userBalance">Account Balance>
         <br>
         <label for="userWithdraw">Withdraw Amount:</label>
         <input type="text" id="userWithdraw">
         <br>
         <br>
         <label for="userDeposit">Deposit Amount:</label>
-        <input type="text" id="userDeposit">
+        <input type="text" id="userDeposit"></div>
     <br>
-    <div class="container2">
-        <div class="center">
+    <div class="container2">  
     <button onclick="UpdatePage()">Submit</button>
     </div>
-    </div>
     <script src="bank.js"></script> 
-</div>
 </div>
 </body>
 </html>

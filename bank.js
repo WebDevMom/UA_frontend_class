@@ -1,8 +1,5 @@
 setTimeout(() => {
-        document.getElementById('loadingAnimation').style.display = 'none';
-        document.getElementById('bodyDiv').style.display = 'block';
-        }, 5000);//--setting animation time
-        
+                
         //Authenticate user. We will add a real authenticator later
         var isUserAuthenticated = true;
 
