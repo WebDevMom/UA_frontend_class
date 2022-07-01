@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Movie List</title>
+
+    <script>
+function loadCards(){
+    var app = document.getElementById("movieCards");
+
+    //Create a new class of XMLHttpRequest and load 
+    var request = new XMLHttpRequest();
+   //Open the API link
+        request.open('GET', 'https://ghibliapi.herokuapp.com/films', true);
+        request.onload = function () {
+           //Parse the JSON data
+            var data = JSON.parse(this.response);
+            //check that we have gotten data from the API
+            if (request.status >= 200 && request.status < 400){
+            
+                //Display API results to console
+                console.log(data);
+                
+                //Loop through all the values in the array of data
+                for(var counter = 0; counter < Object.keys(data).length; counter++){
+                   
+                    //create a div for each MovieCard
+                    var card = document.createElement('div');
+                    card.setAttribute('class', 'card');
+
+                    //Movie Title as an h1
+                    var h1 =  document.createElement('h1');
+                    h1.textContent = data[counter].title;
+                    card.appendChild(h1);
+               
+                    //Movie description as a paragraph
+                    var p =  document.createElement('p');
+                    p.textContent = data[counter].description;
+                    card.appendChild(p);
+
+                    //Movie poster image
+                    var image = document.createElement('img');
+                    image.src = data[counter].image;
+                    app.appendchild(image);
+
+            }
+            }
+            //Show error if API call did not work
+        else {
+            alert("Something went wrong");
+        }
+    }
+    request.send();
+}
+    </script>
+</head>
+<body onload="loadCards()">
+  <div id="movieCards"></div>
+    
+
+
+</body>
+</html>
